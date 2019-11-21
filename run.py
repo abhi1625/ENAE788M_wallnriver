@@ -173,13 +173,13 @@ def compute_flow(img1, img2):
 	tensorOutput = estimate(tensorFirst, tensorSecond)
 	end = time.time()
 	print("inference time",start-end)
-	print("output image",tensorOutput.shape)
+	#print("output image",tensorOutput.shape)
 	# objectOutput = open(arguments_strOut, 'wb')
 	## convert output to image
 	image = tensorOutput.numpy()
-	print("output numpy object ", (numpy.array(img_first)).shape)
+	#print("output numpy object ", (numpy.array(img_first)).shape)
 	hsv = numpy.zeros_like((numpy.array(img_first))[...,0])
-	print(hsv.shape)
+	#print(hsv.shape)
 	# hsv[...,1] = 255
 	mag, ang = cv2.cartToPolar(image[0,...], image[1,...])
 	# hsv[...,0] = 255#ang*180/numpy.pi/2
@@ -190,8 +190,8 @@ def compute_flow(img1, img2):
 		thresh = 0
 	hsv[hsv<thresh] = 0
 	hsv = numpy.uint8(hsv)
-	cv2.imshow("test",hsv)
-	cv2.waitKey(0)
+	#cv2.imshow("test",hsv)
+	#cv2.waitKey(0)
 	return hsv
 if __name__ == '__main__':
 	img_first = cv2.imread(arguments_strFirst)
@@ -201,8 +201,8 @@ if __name__ == '__main__':
 
 	# img1 = PIL.Image.fromarray(img1)
 	# img1 = PIL.Image.fromarray(img2)
-	
-	compute_flow(img1, img2)
+	for i in range(10):	
+		compute_flow(img1, img2)
 
 	# numpy.array([ 80, 73, 69, 72 ], numpy.uint8).tofile(objectOutput)
 	# numpy.array([ tensorOutput.size(2), tensorOutput.size(1) ], numpy.int32).tofile(objectOutput)
