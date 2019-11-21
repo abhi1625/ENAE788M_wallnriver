@@ -160,14 +160,13 @@ def estimate(tensorFirst, tensorSecond):
 # end
 
 ##########################################################
-
-if __name__ == '__main__':
-	newSize = (1024, 416)
+def compute_flow(img1, img2):
+	# img_first = PIL.Image.open(arguments_strFirst)
+	# img_second = PIL.Image.open(arguments_strSecond)
 	flag = False
-	img_first = PIL.Image.open(arguments_strFirst)
-	img_second = PIL.Image.open(arguments_strSecond)
-	img_first = img_first.resize(newSize)
-	img_second = img_second.resize(newSize)
+	newSize = (1024, 416)
+	img_first = cv2.resize(img1, newSize)
+	img_second = cv2.resize(img2, newSize)
 	tensorFirst = torch.FloatTensor(numpy.array(img_first)[:, :, ::-1].transpose(2, 0, 1).astype(numpy.float32) * (1.0 / 255.0))
 	tensorSecond = torch.FloatTensor(numpy.array(img_second)[:, :, ::-1].transpose(2, 0, 1).astype(numpy.float32) * (1.0 / 255.0))
 	start = time.time()
@@ -191,10 +190,19 @@ if __name__ == '__main__':
 		thresh = 0
 	hsv[hsv<thresh] = 0
 	hsv = numpy.uint8(hsv)
-	# rgb = cv2.cvtColor(hsv,cv2.COLOR_HSV2BGR)
-	cv2.imshow("flow output", hsv)
+	cv2.imshow("test",hsv)
 	cv2.waitKey(0)
-	input('a')
+	return hsv
+if __name__ == '__main__':
+	img_first = cv2.imread(arguments_strFirst)
+	img1 = cv2.cvtColor(img_first, cv2.COLOR_BGR2RGB)
+	img_second = cv2.imread(arguments_strSecond)
+	img2 = cv2.cvtColor(img_second, cv2.COLOR_BGR2RGB)
+
+	# img1 = PIL.Image.fromarray(img1)
+	# img1 = PIL.Image.fromarray(img2)
+	
+	compute_flow(img1, img2)
 
 	# numpy.array([ 80, 73, 69, 72 ], numpy.uint8).tofile(objectOutput)
 	# numpy.array([ tensorOutput.size(2), tensorOutput.size(1) ], numpy.int32).tofile(objectOutput)
