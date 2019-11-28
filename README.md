@@ -35,17 +35,7 @@ python run.py
 ``` 
 ## Results
 Exact details about our implementation for this project are outlined in the [submission report](Report.pdf). The videos of the live demos and their plots in rviz are present below
-
-#### Cross the Bridge
-The odometry plot begins with quadrotor mid air with the red axis pointing towards the river. The river is parallel to the plane formed with red and green axis.
-- Rviz visualization 
-
-[![Alt text](images/mq2.jpg)](https://youtu.be/I7XyC80DMCY)
-- Live demo
-
-[![Alt text](images/bridge.PNG)](https://youtu.be/I7XyC80DMCY)
-
-#### Avoid the wall
+### Avoid the wall
 The odometry plot begins with quadrotor taking off from the origin and the window is placed to the left of the quadrotor (in front of green axis as seen from the first 2 seconds of the video )
 - Rviz visualization 
 
@@ -53,3 +43,12 @@ The odometry plot begins with quadrotor taking off from the origin and the windo
 - Live demo
 
 [![Alt text](images/wall_mq2.jpg)](https://youtu.be/23Uqc3Fq_Ns)
+
+### Cross the Bridge
+The odometry plot begins with quadrotor mid air with the red axis pointing towards the river. The river is parallel to the plane formed with red and green axis.
+- Rviz visualization 
+
+[![Alt text](images/mq2.jpg)](https://youtu.be/I7XyC80DMCY)
+- Live demo
+
+[![Alt text](images/bridge.PNG)](https://youtu.be/I7XyC80DMCY)
